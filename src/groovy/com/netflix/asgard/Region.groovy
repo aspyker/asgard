@@ -78,6 +78,11 @@ enum Region {
 		'homepage-docker-logo.png',
 		'Local'
 	),
+    OPENSTACK_1('openstack-1',
+        'us-east-1', // until pricing is working
+        'openstack.png',
+        'OpenStack'
+    )
 
 	static US_SOUTH_1_REGION_CODE = 'us-south-1'
 
@@ -124,7 +129,7 @@ enum Region {
     static List<Region> getLimitedRegions() {
         String onlyRegions = System.getProperty('onlyRegions')
 	// TODO: Remove this hardcoding eventually
-        onlyRegions = "docker-local-1"
+		onlyRegions = "openstack-1"
         if (onlyRegions) {
             List<String> regionNames = onlyRegions.tokenize(',')
             return regionNames.collect { Region.withCode(it) }
@@ -141,6 +146,7 @@ enum Region {
     
     static boolean isRegionUnimplemented(String regionCode) {
         return regionCode == Region.US_SOUTH_1.code ||
-            regionCode == Region.DOCKER_LOCAL_1.code;
+            regionCode == Region.DOCKER_LOCAL_1.code ||
+            regionCode == Region.OPENSTACK_1.code;
     }
 }

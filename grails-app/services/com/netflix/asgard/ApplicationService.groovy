@@ -41,9 +41,9 @@ class ApplicationService implements CacheInitializer, InitializingBean {
 
 
     void afterPropertiesSet() {
-        //appDatabase = appDatabaseAmazonSimpleDBService
+        appDatabase = appDatabaseAmazonSimpleDBService
         //appDatabase = appDatabaseCloudantService
-        appDatabase = appDatabaseMongoService
+        //appDatabase = appDatabaseMongoService
     }
 
     void initializeCaches() {

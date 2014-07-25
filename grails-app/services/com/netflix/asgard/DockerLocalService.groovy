@@ -105,7 +105,10 @@ class DockerLocalService implements InitializingBean {
         
         dockerRestBase = configService.dockerLocalBaseURL
         asgControllerPort = configService.grailsApplication.config.docker.local.asgController?.port ?: "56785"
-        asgControllerHost = determineAsgControllerHostFromDockerInstances()
+        
+        if (!configService.grailsApplication.config.noDocker) {
+            asgControllerHost = determineAsgControllerHostFromDockerInstances()
+        }
 				
     }
 	

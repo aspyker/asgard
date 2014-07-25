@@ -33,6 +33,7 @@ class InitService implements ApplicationContextAware {
     def apiInterceptorService
 	def dockerLocalService
     def softlayerService
+    def openStackService
     
     /**
      * Creates the Asgard Config.groovy file and updates the in memory configuration to reflect the configured state
@@ -71,6 +72,10 @@ class InitService implements ApplicationContextAware {
         
         if (!grailsApplication.config.noDocker) {
             dockerLocalService.initialLogin()
+        }
+        
+        if(!grailsApplication.config.noOpenStack) {
+            openStackService.initialLogin()
         }
 		
         log.info 'Starting caches'

@@ -218,7 +218,16 @@ docker {
     }
 }
 
+openstack {
+    apiHostname = '10.10.0.112'
+    tokenPort = 5000
+    imagePort = 9292
+    asgPort = 8774
+    heatPort = 8004
+    netPort = 9696
+}
+
 initializeWorkflowEngine = false
 noEC2 = true
 noSoftLayer = true
-//noDNSLookups = true
+noDocker = true
